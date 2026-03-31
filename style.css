@@ -2746,6 +2746,7 @@ footer {
 
     .hero-image-wrapper {
         order: -1;
+        margin-top: 12%;
     }
 
     .hero-image-container {
