@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abishek S | Software Developer Portfolio</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">
+                <span class="dot">.</span><span class="dot">N</span><span class="dot">E</span><span class="dot">T</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Abishek<span>.S</span></a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-nav-link">Home</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#experience" class="mobile-nav-link">Experience</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#achievements" class="mobile-nav-link">Achievements</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h3 class="fade-in">Hello, I'm</h3>
+                <h1 class="fade-in delay-1">Abishek S</h1>
+                <h2 class="typewriter-container"><span class="typewriter" id="typewriter"></span></h2>
+                <p class="fade-in delay-2">Full Stack .NET Developer with 2+ years of professional experience building and maintaining enterprise web applications & Mobile applications using ASP.NET Core, .NET MAUI, REST APIs, and Clean Architecture.</p>
+                <div class="hero-btns fade-in delay-3">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get In Touch</a>
+                </div>
+                <div class="hero-social fade-in delay-3">
+                    <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:mr.abishek0401@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-glow"></div>
+        <div class="hero-gradient-bg"></div>
+        <canvas id="particles-canvas"></canvas>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-number" data-target="8">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="stat-number" data-target="2">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-number" data-target="2">0</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Success Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a <strong>Full Stack .NET Developer</strong> with 2+ years of professional experience building and maintaining enterprise web applications. I have a strong background in backend and full-stack development with <strong>Modular Monolith</strong> and <strong>Clean Architecture</strong>, as well as <strong>Blazor</strong>, <strong>GraphQL</strong>, and <strong>Hasura</strong>.</p>
+                    <p>I am a <strong>Certified Scrum Master</strong>, actively contributing in Agile environments to deliver reliable and maintainable solutions. I have demonstrated success in improving application performance, integrating modern UI frameworks, and developing scalable systems.</p>
+                    <p>Passionate about solving real-world problems and delivering robust, production-ready software with expertise in <strong>Redis Cache</strong>, <strong>EPPlus</strong>, and high-performance API design.</p>
+                    
+                    <div class="education-info" style="margin-top: 2rem;">
+                        <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                        <div class="edu-item" style="margin-top: 1rem;">
+                            <strong>Bachelor of Computer Science & Engineering</strong>
+                            <p>CAHCET-Anna university | CGPA: 8.12 | 2019-2023</p>
+                        </div>
+                        <div class="edu-item" style="margin-top: 0.5rem;">
+                            <strong>HSC</strong>
+                            <p>Ethiraj Mat. Hr. Sec. School, Vellore | 60% | 2019</p>
+                        </div>
+                    </div>
+
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Clean Architecture</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Modular Monolith</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Scrum Master</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Redis & EPPlus</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <i class="fas fa-certificate"></i>
+                        <h4>Scrum Certified</h4>
+                        <p>Scrum Fundamentals Certified (SFC)</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-cloud"></i>
+                        <h4>Oracle Cloud</h4>
+                        <p>Data Management Associate 2023</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-code"></i>
+                        <h4>C# Programming</h4>
+                        <p>Besant Technologies Certified</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-language"></i>
+                        <h4>Languages</h4>
+                        <p>English & Tamil (Fluent)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid-new">
+                <div class="skill-category-card">
+                    <div class="skill-card-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">C#</span>
+                        <span class="skill-badge">ASP.NET Core</span>
+                        <span class="skill-badge">REST API</span>
+                        <span class="skill-badge">Clean Architecture</span>
+                        <span class="skill-badge">LINQ</span>
+                        <span class="skill-badge">SignalR</span>
+                        <span class="skill-badge">GraphQL</span>
+                        <span class="skill-badge">ADO.NET</span>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <div class="skill-card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">Blazor</span>
+                        <span class="skill-badge">MudBlazor</span>
+                        <span class="skill-badge">FluentUI</span>
+                        <span class="skill-badge">Blazorise</span>
+                        <span class="skill-badge">Razor Pages</span>
+                        <span class="skill-badge">HTML, CSS, JS</span>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <div class="skill-card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">SQL Server</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Oracle SQL</span>
+                        <span class="skill-badge">Hasura</span>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <div class="skill-card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Process</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge">Agile</span>
+                        <span class="skill-badge">Scrum</span>
+                        <span class="skill-badge">SDLC</span>
+                        <span class="skill-badge">Syncfusion</span>
+                        <span class="skill-badge">Cloudinary</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Progress Bars -->
+            <div class="skills-progress-container">
+                <h3 class="skills-progress-title">Technical Proficiency</h3>
+                <div class="skills-progress-grid">
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span>.NET / C#</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" data-progress="92"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span>ASP.NET Core Web API</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" data-progress="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span>Blazor Ecosystem</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" data-progress="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span>SQL & Database Design</span>
+                            <span>87%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" data-progress="87"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">Career Expertise</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h4>Software Developer</h4>
+                            <span class="timeline-company">Acemicromatic MIT</span>
+                        </div>
+                        <div class="timeline-date">
+                            <i class="far fa-calendar"></i> 2025 - PRESENT
+                        </div>
+                        <ul class="timeline-responsibilities">
+                            <li>Worked on legacy and modern .NET applications, maintaining and enhancing enterprise-level manufacturing systems.</li>
+                            <li>Developed and maintained Web Forms and MVC applications using ADO.NET and .NET Framework 4.x.</li>
+                            <li>Built and consumed Web Services to support data exchange between internal systems.</li>
+                            <li>Collaborated closely with business and manufacturing teams to understand operational requirements and deliver stable solutions.</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span>ASP.NET Web Forms</span>
+                            <span>ASP.NET MVC</span>
+                            <span>.NET Framework 4.x</span>
+                            <span>ADO.NET</span>
+                            <span>Web Services</span>
+                            <span>Blazor</span>
+                            <span>Syncfusion</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h4>Software Developer</h4>
+                            <span class="timeline-company">FocusLogic IT Service</span>
+                        </div>
+                        <div class="timeline-date">
+                            <i class="far fa-calendar"></i> 2024 - 2025
+                        </div>
+                        <ul class="timeline-responsibilities">
+                            <li>Developed and maintained backend APIs and full-stack web applications using .NET Core, REST APIs, and MVC, adhering to Clean Architecture principles.</li>
+                            <li>Improved system performance and user interface for CRM systems, focusing on optimization and feature enhancements.</li>
+                            <li>Integrated cloud-based solutions like Cloudinary for file management and implemented GraphQL for streamlined data querying.</li>
+                            <li>Collaborated in an Agile environment, leveraging Scrum practices for efficient project management and development cycles.</li>
+                            <li>Oversaw database management, optimizing queries and maintaining data integrity.</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span>.NET Core</span>
+                            <span>REST APIs</span>
+                            <span>Clean Architecture</span>
+                            <span>Cloudinary</span>
+                            <span>GraphQL</span>
+                            <span>SQL Server</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Projects Worked</h2>
+            
+            <!-- Vendor Portal - Preserved Project -->
+            <div class="featured-project-compact">
+                <div class="fp-header">
+                    <div class="fp-title-section">
+                        <span class="fp-badge"><i class="fas fa-star"></i> Featured</span>
+                        <h3>Vendor Portal System</h3>
+                    </div>
+                    <div class="fp-tech-preview">
+                        <span>ASP.NET MVC</span>
+                        <span>SQL Server</span>
+                        <span>SAP Integration</span>
+                    </div>
+                </div>
+                
+                <div class="fp-content">
+                    <div class="fp-description">
+                        <p>Enterprise web application for managing supplier transactions, proposal approvals, ASN processing, and invoice lifecycle with real-time SAP integration.</p>
+                    </div>
+                    
+                    <div class="fp-highlights">
+                        <div class="fp-highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Proposal Workflow</span>
+                        </div>
+                        <div class="fp-highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>ASN Management</span>
+                        </div>
+                        <div class="fp-highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>SAP Integration</span>
+                        </div>
+                        <div class="fp-highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Invoice Tracking</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fp-diagrams">
+                        <div class="fp-diagram-item">
+                            <img src="VP Project Flow Diagram.png" alt="Flow Diagram" class="fp-diagram-img" id="flow-diagram">
+                            <span class="fp-diagram-label">Flow Diagram</span>
+                        </div>
+                        <div class="fp-diagram-item">
+                            <img src="VP Architecture Diagram.png" alt="Architecture Diagram" class="fp-diagram-img" id="architecture-diagram">
+                            <span class="fp-diagram-label">Architecture</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fp-actions">
+                        <button class="btn-fp-expand" data-diagram="flow-diagram">
+                            <i class="fas fa-expand"></i> View Diagrams
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid from Resume -->
+            <div class="projects-grid">
+                <!-- Project 1: Automated Scheduler -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Automated Scheduler</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Automated Scheduler Application</h3>
+                        <p>Job shop scheduling system replacing manual production planning. Features real-time updates and interactive Gantt-style views.</p>
+                        <div class="project-tech">
+                            <span>Blazor</span>
+                            <span>Syncfusion</span>
+                            <span>ADO.NET</span>
+                            <span>REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Simply Fresh -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-leaf"></i>
+                            <span>Simply Fresh</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Simply Fresh - AgriTech ERP</h3>
+                        <p>End-to-end ERP for hydroponic farming. Integrates real-time data streaming, IoT monitoring, and automated workflows.</p>
+                        <div class="project-tech">
+                            <span>Blazor Hybrid</span>
+                            <span>MAUI</span>
+                            <span>Fluent UI</span>
+                            <span>.NET 9</span>
+                            <span>SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: AMGIOT -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-industry"></i>
+                            <span>AMGIOT</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AMGIOT Manufacturing App</h3>
+                        <p>Legacy manufacturing system enhancement focusing on User Resource Management (URM) and asset mapping logic.</p>
+                        <div class="project-tech">
+                            <span>Web Forms</span>
+                            <span>ADO.NET</span>
+                            <span>C#</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: CRM -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-users"></i>
+                            <span>CRM System</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Customer Relationship Management</h3>
+                        <p>Streamlined lead management and sales processes with lead tracking, document management, and performance analytics.</p>
+                        <div class="project-tech">
+                            <span>ASP.NET Core</span>
+                            <span>Blazor WASM</span>
+                            <span>PostgreSQL</span>
+                            <span>Dapper</span>
+                            <span>SignalR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Billing Software -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing Software</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Tenant-based Billing System</h3>
+                        <p>Multi-tenant system for managing stock, sales, and financial operations with advanced customization features.</p>
+                        <div class="project-tech">
+                            <span>.NET Core</span>
+                            <span>GraphQL</span>
+                            <span>Hasura</span>
+                            <span>MudBlazor</span>
+                            <span>Cloudinary</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: HMS -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-hospital"></i>
+                            <span>HMS</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Hospital Management System</h3>
+                        <p>Comprehensive queue management system for outpatients with real-time token generation and appointment allocation.</p>
+                        <div class="project-tech">
+                            <span>.NET Core</span>
+                            <span>RESTful APIs</span>
+                            <span>MudBlazor</span>
+                            <span>PostgreSQL</span>
+                            <span>SignalR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements-section">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>SQL Proficiency</h4>
+                    <p>Proficient in SQL with practical experience gained from completing over 100 SQL problems on LeetCode and HackerRank.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h4>Typewriting</h4>
+                    <p>Completed Both English and Tamil (Junior & senior grade) certifications.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h4>Certified Scrum Master</h4>
+                    <p>Actively contributing in Agile environments to deliver reliable and maintainable solutions through Scrum practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Email</h5>
+                                <a href="mailto:mr.abishek0401@gmail.com">mr.abishek0401@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>LinkedIn</h5>
+                                <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank">abishek-s-898b69250</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Phone</h5>
+                                <span>+91 8680875711</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Location</h5>
+                                <span>Bengaluru, Karnataka, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Abishek S" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="abishek@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your message has been sent!</span>
+            </div>
+        </div>
+        <i class="fas fa-times close"></i>
+        <div class="progress"></div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="image-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <img class="modal-image" id="modal-image" src="" alt="Enlarged Diagram">
+            <div class="modal-caption" id="modal-caption"></div>
+            <div class="modal-nav">
+                <button class="modal-btn prev-btn" id="prev-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+                <button class="modal-btn next-btn" id="next-btn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Abishek<span>.S</span></h3>
+                    <p>Software Developer</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:mr.abishek0401@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Abishek S. All rights reserved.</p>
+                <p>Designed with <i class="fa-regular fa-heart"></i> and .NET</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
