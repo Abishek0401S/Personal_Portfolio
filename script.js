@@ -21,10 +21,29 @@ function initCustomCursor() {
 
     if (!cursorOuter || !cursorInner) return;
 
+    // Check if device supports touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Mouse movement for desktop
     window.addEventListener('mousemove', (e) => {
         cursorOuter.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         cursorInner.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
+
+    // Touch movement for mobile
+    if (isTouchDevice) {
+        window.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            cursorOuter.style.transform = `translate(${touch.clientX}px, ${touch.clientY}px)`;
+            cursorInner.style.transform = `translate(${touch.clientX}px, ${touch.clientY}px)`;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            cursorOuter.style.transform = `translate(${touch.clientX}px, ${touch.clientY}px)`;
+            cursorInner.style.transform = `translate(${touch.clientX}px, ${touch.clientY}px)`;
+        }, { passive: true });
+    }
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -36,6 +55,20 @@ function initCustomCursor() {
             cursorInner.classList.remove('hover');
         });
     });
+
+    // Touch hover effect for mobile
+    if (isTouchDevice) {
+        interactiveElements.forEach(el => {
+            el.addEventListener('touchstart', () => {
+                cursorOuter.classList.add('hover');
+                cursorInner.classList.add('hover');
+            });
+            el.addEventListener('touchend', () => {
+                cursorOuter.classList.remove('hover');
+                cursorInner.classList.remove('hover');
+            });
+        });
+    }
 }
 
 // ==================== SCROLL PROGRESS ====================
