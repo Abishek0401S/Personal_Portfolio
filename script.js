@@ -195,6 +195,7 @@ window.addEventListener('scroll', () => {
 
 // ==================== SCROLL TO TOP ====================
 const scrollToTopBtn = document.getElementById('scrollToTop');
+const isMobileView = window.innerWidth <= 768;
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 500) {
@@ -549,21 +550,23 @@ document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(anchor => {
 });
 
 // ==================== PARALLAX EFFECT FOR HERO ====================
-let isMobileView = window.innerWidth <= 768;
+// let isMobileView = window.innerWidth <= 768;
 
 window.addEventListener('resize', () => {
     isMobileView = window.innerWidth <= 768;
 });
 
 window.addEventListener('scroll', () => {
+    // Disable parallax on mobile for smoother experience
+    if (isMobileView) return;
+
     const scrolled = window.scrollY;
     const heroContent = document.querySelector('.hero-content');
     const heroBgGlow = document.querySelector('.hero-bg-glow');
 
     if (heroContent && scrolled < window.innerHeight) {
-        const parallaxFactor = isMobileView ? 0.05 : 0.3;
-        heroContent.style.transform = `translateY(${scrolled * parallaxFactor}px)`;
-        heroContent.style.opacity = isMobileView ? Math.max(0.3, 1 - (scrolled / window.innerHeight) * 0.5) : 1 - (scrolled / window.innerHeight);
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
     }
 
     if (heroBgGlow && scrolled < window.innerHeight) {

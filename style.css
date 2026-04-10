@@ -3804,8 +3804,14 @@ footer::before {
 }
 
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
     .container {
         padding: 0 1.5rem;
+        max-width: 100%;
     }
 
     .navbar .nav-links {
@@ -3962,6 +3968,84 @@ footer::before {
     .modal-nav {
         flex-direction: column;
         align-items: center;
+    }
+
+    /* Mobile nav link hover transition */
+    .mobile-nav-link {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-nav-link:hover {
+        background: var(--glass-bg-hover);
+        border-left-color: var(--primary-color);
+        transform: translateX(8px);
+    }
+
+    .mobile-nav-link:hover i {
+        color: var(--primary-color);
+        transform: scale(1.15);
+    }
+
+    .mobile-nav-link:active {
+        transform: translateX(8px) scale(0.98);
+    }
+
+    /* Smooth transition for mobile menu open/close */
+    .mobile-menu-container {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu::before {
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.active::before {
+        opacity: 1;
+    }
+
+    .mobile-menu.active .mobile-menu-container {
+        transform: translateX(0);
+    }
+
+    /* Remove staggered animation for mobile nav links */
+    .mobile-menu.active .mobile-nav-link {
+        animation: none;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Remove mobile menu close button rotation */
+    .mobile-menu-close:hover {
+        transform: scale(1.05);
+    }
+
+    /* Remove mobile nav link slide effect */
+    .mobile-nav-link:hover {
+        transform: translateX(4px);
+    }
+
+    /* Remove scroll-to-top button hover animation on mobile */
+    .scroll-to-top:hover {
+        transform: none;
+    }
+
+    /* Remove downward motion effect for Career Expertise section (timeline) on mobile */
+    .timeline-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+    }
+
+    .timeline-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Remove timeline content slide-in animation on mobile */
+    .timeline-content:hover {
+        transform: none;
     }
 }
 
