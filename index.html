@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abishek S | Software Developer Portfolio</title>
+    <title>Abishek S | Full Stack .NET Developer | Portfolio</title>
+    <meta name="description" content="Full Stack .NET Developer with 2+ years of experience building enterprise web applications using ASP.NET Core, Blazor, REST APIs, and Clean Architecture. View my projects and get in touch.">
+    <meta name="keywords" content=".NET Developer, ASP.NET Core, Blazor, C#, Full Stack Developer, Software Engineer, Portfolio">
+    <meta name="author" content="Abishek S">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Abishek S | Full Stack .NET Developer">
+    <meta property="og:description" content="Full Stack .NET Developer with 2+ years of experience building enterprise web applications. View my projects and get in touch.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abishek.dev">
+    <meta property="og:image" content="https://abishek.dev/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Abishek S | Full Stack .NET Developer">
+    <meta name="twitter:description" content="Full Stack .NET Developer with 2+ years of experience. View my projects and get in touch.">
+    <meta name="twitter:image" content="https://abishek.dev/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -33,7 +58,7 @@
     <div class="cursor-inner"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <a href="#" class="logo">Abishek<span>.S</span></a>
             <div class="nav-right">
@@ -43,13 +68,14 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="theme-toggle" id="theme-toggle">
                     <i class="fas fa-moon"></i>
                 </div>
-                <div class="menu-toggle" id="mobile-menu">
+                <div class="menu-toggle" id="hamburger-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -58,16 +84,82 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
-        <div class="mobile-menu-content">
-            <a href="#hero" class="mobile-nav-link">Home</a>
-            <a href="#about" class="mobile-nav-link">About</a>
-            <a href="#skills" class="mobile-nav-link">Skills</a>
-            <a href="#experience" class="mobile-nav-link">Experience</a>
-            <a href="#projects" class="mobile-nav-link">Projects</a>
-            <a href="#achievements" class="mobile-nav-link">Achievements</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu-overlay">
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-header">
+                <a href="#" class="mobile-logo">
+                    <img src="images/profile.jpg" alt="Abishek S" class="mobile-profile-pic">
+                    <span class="mobile-logo-text">Abishek<span>.S</span></span>
+                </a>
+                <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav-links-wrapper">
+                <a href="#hero" class="mobile-nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="mobile-nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#skills" class="mobile-nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#experience" class="mobile-nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="#projects" class="mobile-nav-link">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#dashboard" class="mobile-nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#achievements" class="mobile-nav-link">
+                    <i class="fas fa-trophy"></i>
+                    <span>Achievements</span>
+                </a>
+                <a href="#contact" class="mobile-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <div class="mobile-social-links">
+                    <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank" class="mobile-social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:mr.abishek0401@gmail.com" class="mobile-social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currently Working On Banner -->
+    <div class="current-work-banner" id="current-work-banner">
+        <div class="container">
+            <div class="work-banner-content">
+                <span class="work-banner-icon">
+                    <i class="fas fa-code-branch"></i>
+                </span>
+                <div class="work-banner-text">
+                    <span class="work-label">Currently Working On</span>
+                    <span class="work-project">Enterprise .NET 9 Applications & Blazor Hybrid Apps</span>
+                </div>
+                <div class="work-banner-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Available for opportunities</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -91,10 +183,12 @@
                 </div>
                 <div class="hero-image-wrapper fade-in delay-2">
                     <div class="hero-image-container">
+                        <div class="hero-image-bg-decoration"></div>
+                        <div class="hero-image-shape">
+                            <div class="hero-image-inner" style="background-image: url('images/profile.jpg');"></div>
+                        </div>
                         <div class="hero-image-glow"></div>
-                        <div class="hero-image-border"></div>
-                        <img src="images/profile.jpg" alt="Abishek S - Software Developer" class="hero-image">
-                        <div class="hero-image-overlay"></div>
+                        <div class="hero-image-accent-border"></div>
                     </div>
                     <div class="hero-badge">
                         <i class="fas fa-code"></i>
@@ -109,7 +203,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section">
+    <section class="stats-section" aria-label="Key statistics">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -144,8 +238,10 @@
         </div>
     </section>
 
+    <!-- Main Content -->
+    <main>
     <!-- About Me Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="about-section" aria-label="About me">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-grid">
@@ -212,7 +308,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
+    <section id="skills" class="skills-section" aria-label="Technical skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid-new">
@@ -320,7 +416,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience-section">
+    <section id="experience" class="experience-section" aria-label="Work experience">
         <div class="container">
             <h2 class="section-title">Career Expertise</h2>
             <div class="timeline">
@@ -384,7 +480,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects-section">
+    <section id="projects" class="projects-section" aria-label="Projects">
         <div class="container">
             <h2 class="section-title">Projects Worked</h2>
             
@@ -428,11 +524,11 @@
                     
                     <div class="fp-diagrams">
                         <div class="fp-diagram-item">
-                            <img src="VP Project Flow Diagram.png" alt="Flow Diagram" class="fp-diagram-img" id="flow-diagram">
+                            <img src="VP Project Flow Diagram.png" alt="Vendor Portal Flow Diagram" class="fp-diagram-img" id="flow-diagram" loading="lazy" width="600" height="400">
                             <span class="fp-diagram-label">Flow Diagram</span>
                         </div>
                         <div class="fp-diagram-item">
-                            <img src="VP Architecture Diagram.png" alt="Architecture Diagram" class="fp-diagram-img" id="architecture-diagram">
+                            <img src="VP Architecture Diagram.png" alt="Vendor Portal Architecture Diagram" class="fp-diagram-img" id="architecture-diagram" loading="lazy" width="600" height="400">
                             <span class="fp-diagram-label">Architecture</span>
                         </div>
                     </div>
@@ -569,12 +665,159 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 7: Vendor Portal System -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <div class="project-placeholder">
+                            <i class="fas fa-handshake"></i>
+                            <span>Vendor Portal</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Vendor Portal System</h3>
+                        <p>Enterprise supplier management platform with proposal workflows, ASN processing, invoice tracking, and real-time SAP integration.</p>
+                        <div class="project-tech">
+                            <span>ASP.NET MVC</span>
+                            <span>SQL Server</span>
+                            <span>SAP Integration</span>
+                            <span>REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section" aria-label="Developer dashboard">
+        <div class="container">
+            <h2 class="section-title">Developer Dashboard</h2>
+
+            <!-- Quick Stats Cards -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Technical Proficiency</h4>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h4>Skill Distribution</h4>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Project Experience</h4>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fab fa-github"></i>
+                        <h4>GitHub Activity</h4>
+                    </div>
+                    <div class="dashboard-card-body">
+                        <div class="github-stats">
+                            <div class="github-stat">
+                                <span class="github-stat-value" id="github-commits">500+</span>
+                                <span class="github-stat-label">Commits (2024)</span>
+                            </div>
+                            <div class="github-stat">
+                                <span class="github-stat-value" id="github-prs">50+</span>
+                                <span class="github-stat-label">Pull Requests</span>
+                            </div>
+                            <div class="github-stat">
+                                <span class="github-stat-value" id="github-repos">15+</span>
+                                <span class="github-stat-label">Repositories</span>
+                            </div>
+                            <div class="github-stat">
+                                <span class="github-stat-value" id="github-stars">20+</span>
+                                <span class="github-stat-label">Stars Earned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Timeline -->
+            <div class="dashboard-card timeline-card">
+                <div class="dashboard-card-header">
+                    <i class="fas fa-stream"></i>
+                    <h4>Project Timeline</h4>
+                </div>
+                <div class="dashboard-card-body">
+                    <div class="project-timeline">
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2024</span>
+                                <h5>CRM System</h5>
+                                <span>First major project</span>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2024</span>
+                                <h5>Hospital Management</h5>
+                                <span>Healthcare domain</span>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2024</span>
+                                <h5>Billing Software</h5>
+                                <span>Multi-tenant architecture</span>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2025</span>
+                                <h5>Simply Fresh - AgriTech</h5>
+                                <span>Supply chain management with Mobile app. integration</span>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2025</span>
+                                <h5>Automated Scheduler</h5>
+                                <span>Manufacturing optimization</span>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-event-dot"></div>
+                            <div class="timeline-event-content">
+                                <span class="timeline-event-date">2026</span>
+                                <h5>Vendor Portal</h5>
+                                <span>Supply chain management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="achievements-section">
+    <section id="achievements" class="achievements-section" aria-label="Achievements">
         <div class="container">
             <h2 class="section-title">Achievements</h2>
             <div class="achievements-grid">
@@ -603,8 +846,64 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section" aria-label="Testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Abishek consistently delivers high-quality solutions with clean architecture. His expertise in .NET and Blazor has been invaluable to our team."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Engineering Lead</h5>
+                            <span>Acemicromatic MIT</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"A dedicated developer who takes ownership of tasks and delivers on time. His Scrum Master certification shows in how he collaborates with the team."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Delivery Manager</h5>
+                            <span>FocusLogic IT Service</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"His work on our CRM system optimization significantly improved performance. Strong problem-solving skills and attention to detail."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Lead Developer</h5>
+                            <span>FocusLogic IT Service</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" aria-label="Contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-container">
@@ -670,9 +969,10 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Toast Notification -->
-    <div id="toast" class="toast">
+    <div id="toast" class="toast" role="alert" aria-live="polite">
         <div class="toast-content">
             <i class="fas fa-check-circle"></i>
             <div class="message">
@@ -698,27 +998,37 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer aria-label="Footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Abishek<span>.S</span></h3>
-                    <p>Software Developer</p>
+                    <p>Full Stack .NET Developer</p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank" title="LinkedIn" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:mr.abishek0401@gmail.com" title="Email" aria-label="Send Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/abishek" target="_blank" title="GitHub" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
+                    <h4>Quick Links</h4>
                     <a href="#hero">Home</a>
                     <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
+                    <a href="#dashboard">Dashboard</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="footer-social">
-                    <a href="https://linkedin.com/in/abishek-s-898b69250" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:mr.abishek0401@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> mr.abishek0401@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 8680875711</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Abishek S. All rights reserved.</p>
-                <p>Designed with <i class="fa-regular fa-heart"></i> and .NET</p>
+                <p>Built with <i class="fa-regular fa-heart"></i> and .NET</p>
             </div>
         </div>
     </footer>

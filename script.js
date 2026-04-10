@@ -107,24 +107,53 @@ tiltElements.forEach(el => {
 });
 
 // ==================== MOBILE MENU ====================
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+const mobileMenu = document.getElementById('mobile-menu-overlay');
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        mobileMenuOverlay.classList.toggle('active');
-        document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+// Open mobile menu with hamburger button
+if (hamburgerMenu) {
+    hamburgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
 }
 
+// Close mobile menu with X button
+if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+}
+
+// Close mobile menu when clicking on overlay (outside menu container)
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', (e) => {
+        // Only close if clicking directly on overlay, not on menu container
+        if (e.target === mobileMenu) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Close mobile menu when clicking nav links
 mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     });
+});
+
+// Close mobile menu on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 });
 
 // ==================== THEME TOGGLE ====================
@@ -148,6 +177,9 @@ themeToggle.addEventListener('click', () => {
         themeIcon.classList.replace('fa-sun', 'fa-moon');
         localStorage.setItem('theme', 'dark');
     }
+
+    // Update chart colors when theme changes
+    updateChartColors();
 });
 
 // ==================== NAVBAR SCROLL EFFECT ====================
@@ -217,6 +249,21 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach(section => {
     section.classList.add('reveal');
     sectionObserver.observe(section);
+});
+
+// ==================== SECTION TITLE REVEAL ====================
+const sectionTitles = document.querySelectorAll('.section-title');
+const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-title');
+            titleObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+sectionTitles.forEach(title => {
+    titleObserver.observe(title);
 });
 
 // ==================== TYPEWRITER EFFECT ====================
@@ -502,14 +549,21 @@ document.querySelectorAll('.nav-links a, .mobile-nav-link').forEach(anchor => {
 });
 
 // ==================== PARALLAX EFFECT FOR HERO ====================
+let isMobileView = window.innerWidth <= 768;
+
+window.addEventListener('resize', () => {
+    isMobileView = window.innerWidth <= 768;
+});
+
 window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const heroContent = document.querySelector('.hero-content');
     const heroBgGlow = document.querySelector('.hero-bg-glow');
 
     if (heroContent && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-        heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+        const parallaxFactor = isMobileView ? 0.05 : 0.3;
+        heroContent.style.transform = `translateY(${scrolled * parallaxFactor}px)`;
+        heroContent.style.opacity = isMobileView ? Math.max(0.3, 1 - (scrolled / window.innerHeight) * 0.5) : 1 - (scrolled / window.innerHeight);
     }
 
     if (heroBgGlow && scrolled < window.innerHeight) {
@@ -777,4 +831,266 @@ function trapFocus(element) {
 
 if (imageModal) {
     trapFocus(imageModal);
+}
+
+// ==================== DASHBOARD CHARTS ====================
+let chartsInitialized = false;
+let chartInstances = {};
+
+function getChartColors() {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const isLightMode = document.body.classList.contains('light-mode');
+
+    return {
+        primaryColor: rootStyles.getPropertyValue('--primary-color').trim() || '#00d2ff',
+        accentColor: rootStyles.getPropertyValue('--accent-color').trim() || '#8b5cf6',
+        textColor: isLightMode ? '#0f172a' : '#f8fafc',
+        textSecondary: isLightMode ? '#475569' : '#94a3b8',
+        glassBorder: isLightMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)',
+        isLightMode: isLightMode
+    };
+}
+
+function initDashboardCharts() {
+    if (chartsInitialized) return;
+
+    // Check if Chart.js is loaded
+    if (typeof Chart === 'undefined') {
+        console.warn('Chart.js not loaded yet');
+        return;
+    }
+
+    chartsInitialized = true;
+    const colors = getChartColors();
+
+    // Radar Chart - Technical Proficiency
+    const radarCtx = document.getElementById('radarChart');
+    if (radarCtx) {
+        chartInstances.radar = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['.NET/C#', 'ASP.NET Core', 'Blazor', 'SQL/Database', 'Frontend', 'DevOps'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [92, 90, 88, 87, 75, 70],
+                    backgroundColor: 'rgba(0, 210, 255, 0.2)',
+                    borderColor: colors.primaryColor,
+                    borderWidth: 2,
+                    pointBackgroundColor: colors.primaryColor,
+                    pointBorderColor: colors.isLightMode ? '#0f172a' : '#fff',
+                    pointHoverBackgroundColor: colors.isLightMode ? '#0f172a' : '#fff',
+                    pointHoverBorderColor: colors.primaryColor
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: colors.glassBorder
+                        },
+                        grid: {
+                            color: colors.glassBorder
+                        },
+                        pointLabels: {
+                            color: colors.textColor,
+                            font: {
+                                size: 11,
+                                weight: '500'
+                            }
+                        },
+                        ticks: {
+                            display: false,
+                            max: 100,
+                            backdropColor: 'transparent'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    // Doughnut Chart - Skill Distribution
+    const doughnutCtx = document.getElementById('doughnutChart');
+    if (doughnutCtx) {
+        chartInstances.doughnut = new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Backend', 'Frontend', 'Database', 'DevOps', 'Other'],
+                datasets: [{
+                    data: [40, 25, 20, 10, 5],
+                    backgroundColor: [
+                        'rgba(0, 210, 255, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(255, 107, 107, 0.8)',
+                        'rgba(148, 163, 184, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 210, 255, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(255, 107, 107, 1)',
+                        'rgba(148, 163, 184, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: colors.textColor,
+                            padding: 15,
+                            font: {
+                                size: 11
+                            },
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Bar Chart - Project Experience
+    const barCtx = document.getElementById('barChart');
+    if (barCtx) {
+        chartInstances.bar = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['ERP', 'CRM', 'Billing', 'HMS', 'Vendor Portal', 'Scheduler'],
+                datasets: [{
+                    label: 'Complexity Score',
+                    data: [85, 75, 80, 70, 95, 88],
+                    backgroundColor: [
+                        'rgba(0, 210, 255, 0.6)',
+                        'rgba(139, 92, 246, 0.6)',
+                        'rgba(34, 197, 94, 0.6)',
+                        'rgba(255, 107, 107, 0.6)',
+                        'rgba(255, 193, 7, 0.6)',
+                        'rgba(0, 210, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        colors.primaryColor,
+                        colors.accentColor,
+                        '#22c55e',
+                        '#ff6b6b',
+                        '#ffc107',
+                        colors.primaryColor
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: colors.glassBorder
+                        },
+                        ticks: {
+                            color: colors.textSecondary,
+                            backdropColor: 'transparent'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: colors.textSecondary,
+                            font: {
+                                size: 10
+                            },
+                            backdropColor: 'transparent'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+}
+
+// ==================== UPDATE CHART COLORS ON THEME CHANGE ====================
+function updateChartColors() {
+    if (!chartsInitialized) return;
+
+    const colors = getChartColors();
+
+    // Update Radar Chart
+    if (chartInstances.radar) {
+        const radar = chartInstances.radar;
+        radar.data.datasets[0].pointBorderColor = colors.isLightMode ? '#0f172a' : '#fff';
+        radar.data.datasets[0].pointHoverBackgroundColor = colors.isLightMode ? '#0f172a' : '#fff';
+        radar.options.scales.r.pointLabels.color = colors.textColor;
+        radar.options.scales.r.grid.color = colors.glassBorder;
+        radar.options.scales.r.angleLines.color = colors.glassBorder;
+        radar.update('none');
+    }
+
+    // Update Doughnut Chart
+    if (chartInstances.doughnut) {
+        const doughnut = chartInstances.doughnut;
+        doughnut.options.plugins.legend.labels.color = colors.textColor;
+        doughnut.update('none');
+    }
+
+    // Update Bar Chart
+    if (chartInstances.bar) {
+        const bar = chartInstances.bar;
+        bar.options.scales.y.grid.color = colors.glassBorder;
+        bar.options.scales.y.ticks.color = colors.textSecondary;
+        bar.options.scales.x.ticks.color = colors.textSecondary;
+        bar.update('none');
+    }
+}
+
+// ==================== INITIALIZE DASHBOARD ON SCROLL ====================
+const dashboardSection = document.querySelector('.dashboard-section');
+
+if (dashboardSection) {
+    const dashboardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !chartsInitialized) {
+                initDashboardCharts();
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    dashboardObserver.observe(dashboardSection);
+}
+
+// ==================== FIX CUSTOM CURSOR ON MOBILE ====================
+// Ensure cursor is properly disabled on touch devices
+function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+if (isTouchDevice()) {
+    const cursorElements = document.querySelectorAll('.cursor-outer, .cursor-inner');
+    cursorElements.forEach(el => {
+        el.style.display = 'none';
+    });
 }
